@@ -1,5 +1,6 @@
 import React from "react";
 import ItemCard from "./ItemCard.jsx";
+import { Link } from "react-router-dom";
 
 function ItemsContainer({ itemsResource }) {
   const items = itemsResource.read().Search || [];
@@ -9,7 +10,9 @@ function ItemsContainer({ itemsResource }) {
       {items.length > 0 ? (
         <div className="container">
           {items.map((item) => (
-            <ItemCard key={item.imdbID} item={item} />
+            <Link key={item.imdbID} to={`/movies/${item.imdbID}`}>
+              <ItemCard key={item.imdbID} item={item} />
+            </Link>
           ))}
         </div>
       ) : (

@@ -6,6 +6,7 @@ import { SeriesProvider } from "./contexts/SeriesContext";
 import SeriesView from "./views/SeriesView";
 import MissingRouteView from "./views/MissingRouteView";
 import MoviesView from "./views/MoviesView";
+import DetailedMovieView from "./views/DetailedMovieView";
 
 import Sidebar from "./components/navigation/Sidebar";
 
@@ -19,6 +20,7 @@ function App() {
             <Sidebar />
             <Routes>
               <Route path="/movies" element={<MoviesView />} />
+              <Route path="/movies/:movieId" element={<DetailedMovieView />} />
               <Route path="/series" element={<SeriesView />} />
               <Route path="*" element={<MissingRouteView />} />
             </Routes>
