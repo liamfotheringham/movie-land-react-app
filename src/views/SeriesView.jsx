@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import MoviesContext from "../contexts/MovieContext";
+import SeriesContext from "../contexts/SeriesContext";
 import BaseContainerView from "./BaseContainerView";
 
-function MoviesView() {
-  const { movies, searchTerm, setSearchTerm, handleSearch } = useContext(MoviesContext);
+function SeriesView() {
+  const { series, searchTerm, setSearchTerm, handleSearch } = useContext(SeriesContext);
 
   return (
     <BaseContainerView
-      items={movies}
+      items={series}
       searchTerm={searchTerm}
       setSearchTerm={setSearchTerm}
       handleSearch={handleSearch}
@@ -15,4 +15,4 @@ function MoviesView() {
   );
 }
 
-export default MoviesView;
+export default SeriesView

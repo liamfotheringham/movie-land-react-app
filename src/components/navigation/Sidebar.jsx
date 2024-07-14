@@ -9,8 +9,8 @@ const items = [
     path: "/movies"
   },
   {
-    title: "Another Page",
-    path: "/another-page"
+    title: "Series",
+    path: "/series"
   }
 ]
 
