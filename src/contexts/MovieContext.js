@@ -1,23 +1,27 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { createResource } from "../composables/SuspenseResource";
 import { fetchMovies } from "../services/MoviesService";
 
-const MovieContext = createContext();
+const MoviesContext = createContext();
 
-const MovieProvider = ({ children }) => {
-  const MOVIE = "Indiana Jones"
-
-  const [movies, setMovies] = useState([]);
+export const MoviesProvider = ({ children }) => {
+  const MOVIE = "Star Wars";
+  const [searchTerm, setSearchTerm] = useState(MOVIE);
+  const [movies, setMovies] = useState(() => createResource(fetchMovies(MOVIE)));
 
   useEffect(() => {
     setMovies(createResource(fetchMovies(MOVIE)));
   }, []);
 
+  const handleSearch = () => {
+    setMovies(createResource(fetchMovies(searchTerm)));
+  };
+
   return (
-    <MovieContext.Provider value={{ movies, setMovies }}>
+    <MoviesContext.Provider value={{ searchTerm, setSearchTerm, movies, handleSearch }}>
       {children}
-    </MovieContext.Provider>
-  )
+    </MoviesContext.Provider>
+  );
 };
 
-export { MovieContext, MovieProvider };
+export default MoviesContext;
