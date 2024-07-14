@@ -1,39 +1,22 @@
 import "./App.css";
-
-import React, { useState, useEffect, Suspense } from "react";
-import { createResource } from "./composables/SuspenseResource";
-import { fetchMovies } from "./services/MoviesService";
-
-import Loading from "./components/Loading";
-import MoviesContainer from "./components/movies/MoviesContainer";
-import SearchInput from "./components/SearchInput";
-
-const MOVIE = "Star Wars"
+import Sidebar from "./components/navigation/Sidebar";
+import AnotherPageView from "./views/AnotherPageView";
+import MissingRouteView from "./views/MissingRouteView";
+import MoviesView from "./views/MoviesView";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState(MOVIE);
-  const [movies, setMovies] = useState(() => createResource(fetchMovies(MOVIE)));
-
-  useEffect(() => {
-    setMovies(createResource(fetchMovies(MOVIE)));
-  }, []);
-
-  function handleSearch() {
-    setMovies(createResource(fetchMovies(searchTerm)));
-  }
-
   return (
     <div className="app">
-      <h1>MovieLand</h1>
-      <SearchInput
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        onSearch={handleSearch}
-      >
-      </SearchInput>
-      <Suspense fallback={<Loading />}>
-        <MoviesContainer moviesResource={movies} />
-      </Suspense>
+      <h1>Movie Land</h1>
+      <Router>
+        <Sidebar />
+        <Routes>
+          <Route path="/movies" element={<MoviesView />} />
+          <Route path="/another-page" element={<AnotherPageView />} />
+          <Route path="*" element={<MissingRouteView />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
