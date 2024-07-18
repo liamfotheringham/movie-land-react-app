@@ -1,7 +1,7 @@
 import React from "react";
-import SearchIcon from "../assets/search.svg";
+// import SearchIcon from "../assets/search.svg";
 
-function SearchInput({ searchTerm, setSearchTerm, onSearch }) {
+function SearchInput({ searchTerm, setSearchTerm, onSearch }: any) {
   return (<div className="search">
     <input
       placeholder="search here..."
@@ -9,7 +9,7 @@ function SearchInput({ searchTerm, setSearchTerm, onSearch }) {
       onChange={(e) => setSearchTerm(e.target.value)}
     />
     <img
-      src={SearchIcon}
+      // src={SearchIcon}
       alt="Search Magnifier Logo"
       onClick={onSearch}
     />

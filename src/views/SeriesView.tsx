@@ -3,7 +3,7 @@ import SeriesContext from "../contexts/SeriesContext";
 import BaseContainerView from "./BaseContainerView";
 
 function SeriesView() {
-  const { series, searchTerm, setSearchTerm, handleSearch } = useContext(SeriesContext);
+  const { series, searchTerm, setSearchTerm, handleSearch }: any = useContext(SeriesContext);
 
   return (
     <BaseContainerView

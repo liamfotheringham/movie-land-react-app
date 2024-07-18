@@ -1,12 +1,12 @@
-export function createResource(promise) {
+export function createResource(promise: any) {
     let status = "pending";
-    let result;
+    let result: any;
     let suspender = promise.then(
-      r => {
+      (r: any) => {
         status = "success";
         result = r;
       },
-      e => {
+      (e: any) => {
         status = "error";
         result = e;
       }

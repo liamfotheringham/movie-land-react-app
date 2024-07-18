@@ -1,6 +1,6 @@
 import React from "react";
 
-function ItemCard({item}) {
+function ItemCard({item}: any) {
   return (
     <div className="movie">
       <div>

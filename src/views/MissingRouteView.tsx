@@ -1,3 +1,5 @@
+import React from "react";
+
 function MissingRouteView(){
   return (
     <div className="empty">

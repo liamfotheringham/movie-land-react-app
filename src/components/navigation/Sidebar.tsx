@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/sidebar.css"
-import SearchIcon from "../../assets/search.svg";
+// import SearchIcon from "../../assets/search.svg";
 
 const items = [
   {
@@ -31,7 +31,7 @@ function Sidebar() {
         >
           {isOpen ? "<" : ">"}
         </button>
-        <img src={SearchIcon} alt="Side bar logo"></img>
+        {/* <img src={SearchIcon} alt="Side bar logo"></img> */}
         <nav>
           {items.map(item => (
             <button key={item.title} onClick={() => { navigate(item.path) }}>{item.title}</button>

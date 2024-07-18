@@ -3,7 +3,7 @@ import MoviesContext from "../contexts/MovieContext";
 import BaseContainerView from "./BaseContainerView";
 
 function MoviesView() {
-  const { movies, searchTerm, setSearchTerm, handleSearch } = useContext(MoviesContext);
+  const { movies, searchTerm, setSearchTerm, handleSearch }: any = useContext(MoviesContext);
 
   return (
     <BaseContainerView

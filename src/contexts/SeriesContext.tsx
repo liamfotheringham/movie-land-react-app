@@ -2,9 +2,9 @@ import React, { createContext, useState, useEffect } from "react";
 import { createResource } from "../composables/SuspenseResource";
 import { fetchSeries } from "../services/MoviesService";
 
-const SeriesContext = createContext();
+const SeriesContext = createContext<any | null>(null);
 
-export const SeriesProvider = ({ children }) => {
+export const SeriesProvider: React.FC<{ children: React.ReactNode }> = ({ children }: any) => {
   const SERIES = "Pokemon";
   const [searchTerm, setSearchTerm] = useState(SERIES);
   const [series, setSeries] = useState(() => createResource(fetchSeries(SERIES)));

@@ -2,9 +2,9 @@ import React, { createContext, useState, useEffect } from "react";
 import { createResource } from "../composables/SuspenseResource";
 import { fetchMovies } from "../services/MoviesService";
 
-const MoviesContext = createContext();
+const MoviesContext = createContext<any | null>(null);
 
-export const MoviesProvider = ({ children }) => {
+export const MoviesProvider: React.FC<{ children: React.ReactNode }> = ({ children }: any) => {
   const MOVIE = "Star Wars";
   const [searchTerm, setSearchTerm] = useState(MOVIE);
   const [movies, setMovies] = useState(() => createResource(fetchMovies(MOVIE)));

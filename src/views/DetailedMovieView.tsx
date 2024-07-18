@@ -6,19 +6,18 @@ import Loading from "../components/Loading";
 
 function MovieView() {
   const { movieId } = useParams();
-  const { movies } = useContext(MoviesContext);
-  const resolvedMovies = movies.read().Search;
+  const { movies }: any = useContext(MoviesContext);
 
   const [tempMovieState, setTempMovieState] = useState(null);
 
   useEffect(() => {
-    if (resolvedMovies == null) {
+    if (movies == null) {
       return;
     }
 
-    const movie = resolvedMovies.find(m => m.imdbID === movieId);
+    const movie = movies.read().Search.find((m: any) => m.imdbID === movieId);
     setTempMovieState(movie);
-  }, [resolvedMovies, movieId]);
+  }, [movies, movieId]);
 
   if (!tempMovieState) {
     return (
