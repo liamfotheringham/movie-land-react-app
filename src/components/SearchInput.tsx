@@ -1,7 +1,7 @@
 import React from "react";
 // import SearchIcon from "../assets/search.svg";
 
-function SearchInput({ searchTerm, setSearchTerm, onSearch }: any) {
+function SearchInput({ searchTerm, setSearchTerm, onSearch }: { searchTerm: string, setSearchTerm: Function, onSearch: () => void }) {
   return (<div className="search">
     <input
       placeholder="search here..."

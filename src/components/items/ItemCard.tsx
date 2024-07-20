@@ -1,6 +1,8 @@
 import React from "react";
 
-function ItemCard({item}: any) {
+import { title } from "../../contracts/MovieContract"
+
+function ItemCard({item}: {item: title}) {
   return (
     <div className="movie">
       <div>

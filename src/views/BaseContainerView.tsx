@@ -1,9 +1,9 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ItemsContainer from "../components/items/ItemContainer";
-import Loading from "../components/Loading";
 import SearchInput from "../components/SearchInput";
+import { title } from "../contracts/MovieContract";
 
-function BaseContainerView({items, searchTerm, setSearchTerm, handleSearch}: any) {
+function BaseContainerView({ items, searchTerm, setSearchTerm, handleSearch }: { items: title[], searchTerm: string, setSearchTerm: Function, handleSearch: () => void }) {
   return (
     <>
       <SearchInput
@@ -11,12 +11,10 @@ function BaseContainerView({items, searchTerm, setSearchTerm, handleSearch}: any
         setSearchTerm={setSearchTerm}
         onSearch={handleSearch}
       />
-      
-      <Suspense fallback={<Loading />}>
-        <ItemsContainer itemsResource={items} />
-      </Suspense>
+
+      <ItemsContainer items={items} />s
     </>
-  );
+  )
 }
 
 export default BaseContainerView;

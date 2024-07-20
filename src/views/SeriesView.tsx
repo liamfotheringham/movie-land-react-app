@@ -1,9 +1,16 @@
 import React, { useContext } from "react";
+import Loading from "../components/Loading";
 import SeriesContext from "../contexts/SeriesContext";
 import BaseContainerView from "./BaseContainerView";
 
 function SeriesView() {
-  const { series, searchTerm, setSearchTerm, handleSearch }: any = useContext(SeriesContext);
+  const context = useContext(SeriesContext);
+
+  if(!context){
+    return <Loading />
+  }
+
+  const { series, searchTerm, setSearchTerm, handleSearch } = context;
 
   return (
     <BaseContainerView

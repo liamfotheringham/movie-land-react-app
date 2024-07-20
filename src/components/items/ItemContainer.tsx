@@ -1,15 +1,14 @@
 import React from "react";
 import ItemCard from "./ItemCard";
 import { Link } from "react-router-dom";
+import { title } from "../../contracts/MovieContract";
 
-function ItemsContainer({ itemsResource }: any) {
-  const items = itemsResource.read().Search || [];
-
+function ItemsContainer({ items }: {items: title[]}) {
   return (
     <>
       {items.length > 0 ? (
         <div className="container">
-          {items.map((item: any) => (
+          {items.map((item: title) => (
             <Link key={item.imdbID} to={`/movies/${item.imdbID}`}>
               <ItemCard key={item.imdbID} item={item} />
             </Link>

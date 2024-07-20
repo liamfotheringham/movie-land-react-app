@@ -1,21 +1,39 @@
 import React, { createContext, useState, useEffect } from "react";
-import { createResource } from "../composables/SuspenseResource";
+import Loading from "../components/Loading";
+import { title } from "../contracts/MovieContract";
 import { fetchSeries } from "../services/MoviesService";
 
-const SeriesContext = createContext<any | null>(null);
+interface SeriesProviderProps {
+  searchTerm: string,
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>,
+  series: title[],
+  handleSearch: () => void,
+}
 
-export const SeriesProvider: React.FC<{ children: React.ReactNode }> = ({ children }: any) => {
+const SeriesContext = createContext<SeriesProviderProps | null>(null);
+
+export const SeriesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const SERIES = "Pokemon";
   const [searchTerm, setSearchTerm] = useState(SERIES);
-  const [series, setSeries] = useState(() => createResource(fetchSeries(SERIES)));
+  const [series, setSeries] = useState<title[]>();
 
   useEffect(() => {
-    setSeries(createResource(fetchSeries(SERIES)));
+    async function initData() {
+      const result = await fetchSeries(SERIES);
+      setSeries(result.Search);
+    }
+
+    initData();
   }, []);
 
-  const handleSearch = () => {
-    setSeries(createResource(fetchSeries(searchTerm)));
+  const handleSearch = async () => {
+    const result = await fetchSeries(searchTerm)
+    setSeries(result.Search);
   };
+
+  if (!series) {
+    return <Loading />
+  }
 
   return (
     <SeriesContext.Provider value={{ searchTerm, setSearchTerm, series, handleSearch }}>
