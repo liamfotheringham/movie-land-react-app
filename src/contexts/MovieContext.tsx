@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import Loading from "../components/Loading";
+import Loading from "../components/utils/Loading";
 import { Title } from "../contracts/MovieContract";
 import { fetchMovies } from "../services/MoviesService";
 

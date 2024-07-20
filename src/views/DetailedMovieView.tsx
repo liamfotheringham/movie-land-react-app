@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MoviesContext from "../contexts/MovieContext";
 import ItemCard from "../components/items/ItemCard";
-import Loading from "../components/Loading";
+import Loading from "../components/utils/Loading";
 import { Title } from "../contracts/MovieContract";
 
 function MovieView() {

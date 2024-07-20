@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Loading from "../components/Loading";
+import Loading from "../components/utils/Loading";
 import SeriesContext from "../contexts/SeriesContext";
 import BaseContainerView from "./BaseContainerView";
 
