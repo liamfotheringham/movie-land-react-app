@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const titleTypeEnum = z.enum(["movie", "series"])
+const titleTypeEnum = z.enum(["movie", "series"])
+export type TitleTypeOptions = z.infer<typeof titleTypeEnum>;
 
 export const titleSchema = z.object({
   Title: z.string(),
@@ -10,7 +11,7 @@ export const titleSchema = z.object({
   Poster: z.string().url()
 });
 
-export type title = z.infer<typeof titleSchema>
+export type Title = z.infer<typeof titleSchema>
 
 export const searchResponseSchema = z.object({
   Search: titleSchema.array(),
@@ -18,4 +19,4 @@ export const searchResponseSchema = z.object({
   Response: z.string(),
 });
 
-export type searchResponse = z.infer<typeof searchResponseSchema>
+export type SearchResponse = z.infer<typeof searchResponseSchema>
