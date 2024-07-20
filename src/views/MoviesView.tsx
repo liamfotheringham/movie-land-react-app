@@ -1,9 +1,16 @@
 import React, { useContext } from "react";
+import Loading from "../components/utils/Loading";
 import MoviesContext from "../contexts/MovieContext";
 import BaseContainerView from "./BaseContainerView";
 
 function MoviesView() {
-  const { movies, searchTerm, setSearchTerm, handleSearch } = useContext(MoviesContext);
+  const context = useContext(MoviesContext);
+
+  if(!context){
+    return <Loading />
+  }
+
+  const { movies, searchTerm, setSearchTerm, handleSearch } = context;
 
   return (
     <BaseContainerView
